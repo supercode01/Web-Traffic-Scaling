@@ -1,0 +1,26 @@
+services:
+  # Main Website which we have to scale
+  web:
+    build: .
+    ports:
+      - "8080-8085:80"
+    deploy:
+      replicas: 1
+
+  # Monitoring System
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  # Visualization Dashboard
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin

@@ -1,0 +1,8 @@
+global:
+  scrape_interval: 5s # check data after 5s 
+
+scrape_configs:
+  - job_name: 'sentinel_api'
+    static_configs:
+      - targets: ['host.docker.internal:8000'] 
+        # Prometheus running on docker and API running on host machine, so use host.docker.internal to access the API from Prometheus container. If both are running on the same machine, we can use localhost:8000 instead.
