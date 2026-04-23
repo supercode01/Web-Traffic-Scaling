@@ -19,8 +19,8 @@ total_hits = 0
 @app.route('/visit')
 def visit():
     """
-    Is route ko Stress Test hit karega. 
-    Har 1 hit ko hum 100,000 virtual users ke barabar dikhayenge.
+    Stress Test will hit this endpoint.
+    Each hit will be represented as 100,000 virtual users.
     """
     global total_hits
     total_hits += 100000  # 1 hit = 100k users (for Millions of scale)
@@ -46,7 +46,7 @@ def predict_traffic():
     })
 
 if __name__ == '__main__':
-    # Start Prometheus server on 8000
+    # Start Prometheus client on 8000
     start_http_server(8000)
     # Flask app on 5000
     app.run(host='0.0.0.0', port=5000)

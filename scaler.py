@@ -5,7 +5,7 @@ import os
 # Configuration
 PROMETHEUS_URL = "http://localhost:9090/api/v1/query"
 QUERY = 'sentinel_predicted_load'
-THRESHOLD = 75000000  # Aapke dataset ke mutabiq load (e.g., 800 visits)
+THRESHOLD = 75000000  # Aapke dataset ke mutabiq load (e.g., 750k visits)
 
 def get_prediction():
     try:
